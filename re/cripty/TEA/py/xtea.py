@@ -29,9 +29,12 @@ def decrypt(rounds, v, k):
     v[1] = v1
     return v
 if __name__ == '__main__':
-    plain = [1, 2]
-    key = [2, 2, 3, 4]
+    # encrypted = [0xA3699626, 0xBD780B3D, 0x9DA52862]
+    encrypted = [0x0B3D9DA5, 0x2862A369, 0X9626BD78]
+    key = [2, 0, 2, 4]
     rounds = 32
-    encrypted = encrypt(rounds, plain, key)
+    # encrypted = encrypt(rounds, plain, key)
 
     decrypted = decrypt(rounds, encrypted, key)
+    decrypted = decrypt(rounds, decrypted, key)
+    print('Plain: ',  [hex(num & 0xffffffff) for num in decrypted])

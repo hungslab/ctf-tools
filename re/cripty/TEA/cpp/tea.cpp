@@ -28,16 +28,16 @@ void decrypt (uint32_t* v, uint32_t* k) {
  
 int main()
 {
-    uint32_t enflag[] = {0xCE21E888,0x709D000B,0x8FE6B191,0x96EA3101,0x7D9D20A3,0xFB7D18A9,0xCAC552C4,0x536769A9};
-    uint32_t key[4] = {0x00000012, 0x00000034, 0x00000056, 0x00000078};
+    uint32_t enflag[] = {0x284C2234, 0x3910C558};
+    uint32_t key[4] = {1702060386, 1870148662, 1634038898, 1634038904};
     for(int i=0;i<sizeof(enflag)/sizeof(enflag[0]);i+=2)
     {
         uint32_t temp[2];
         temp[0] = enflag[i];
         temp[1] = enflag[i+1];
         decrypt(temp, key);
-//        printf("%X %X\n",temp[0],temp[1]);
-        printf("%c%c%c%c%c%c%c%c",*((char*)&temp[0]+0),*((char*)&temp[0]+1),*((char*)&temp[0]+2),*((char*)&temp[0]+3),*((char*)&temp[1]+0),*((char*)&temp[1]+1),*((char*)&temp[1]+2),*((char*)&temp[1]+3));
+        printf("%X %X\n",temp[0],temp[1]);
+        // printf("%c%c%c%c%c%c%c%c",*((char*)&temp[0]+0),*((char*)&temp[0]+1),*((char*)&temp[0]+2),*((char*)&temp[0]+3),*((char*)&temp[1]+0),*((char*)&temp[1]+1),*((char*)&temp[1]+2),*((char*)&temp[1]+3));
     }
     return 0;
 }

@@ -41,7 +41,7 @@ void rc4_crypt(unsigned char* s, unsigned char* Data, unsigned long data_len){
 
 int main(){
 	//字符串密钥
-	unsigned char key[] = "CISCN_easy_reverse";
+	unsigned char key[] = "FenKey!!";
 	unsigned long key_len = sizeof(key) - 1;
 	/*
 	//数组密钥
@@ -51,12 +51,12 @@ int main(){
 	unsigned char s[256];
 	rc4_init(s, key, key_len);
 	//加解密数据
-	unsigned char data[] = {0x31,0x31,0x31,0x31,0x31,0x31,0x31,0x31 };
-	//加解密
+	unsigned char data[] = { 0x21, 0xAB, 0x3F, 0x42, 0x65, 0x8F, 0x3C, 0x5B, 0x0C, 0x17, 0x05, 0x6E, 0x84, 0xE7, 0x1A, 0x69, 0xC3, 0x77, 0x70, 0x1F, 0x11};
+    //加解密
 	rc4_crypt(s, data, sizeof(data));
-
+	
 	for (int i = 0; i < sizeof(data); i++){
-		printf("%x ", data[i]);
+		printf("%c", data[i] ^ 0x66 & 0xff);
 	}
 	return 0;
 }

@@ -98,17 +98,17 @@ def bruteForce(img_path):
     if n := input("请输入n的范围 (如:1-10, 回车默认为1): "):
         n_lis = list(map(lambda x: int(x), n.split("-")))
     else:
-        n_lis = [1, 2]
+        n_lis = [519, 523]
 
     if a := input("请输入a的范围 (如:1-10, 回车默认为1-10): "):
         a_lis = list(map(lambda x: int(x), a.split("-")))
     else:
-        a_lis = [1, 10]
+        a_lis = [10, 15]
         
     if b := input("请输入b的范围 (如:1-10, 回车默认为1-10): "):
         b_lis = list(map(lambda x: int(x), b.split("-")))
     else:
-        b_lis = [1, 10]
+        b_lis = [10, 15]
 
     for n in range(n_lis[0], n_lis[1]):
         for a in range(a_lis[0], a_lis[1]):

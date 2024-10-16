@@ -14,7 +14,7 @@ void encrypt(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) {
     v[0]=v0; v[1]=v1;
 }
  
-void decrypt(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) {
+void decrypt(unsigned int num_rounds, uint32_t *v, uint32_t const *key) {
     unsigned int i;
     uint32_t v0=v[0], v1=v[1], delta=0x9E3779B9, sum=delta*num_rounds;
     for (i=0; i < num_rounds; i++) {
@@ -27,8 +27,8 @@ void decrypt(unsigned int num_rounds, uint32_t v[2], uint32_t const key[4]) {
  
 int main()
 {
-	uint32_t enflag[] = {0x0ECFDA301, 0x61BECDF5, 0x0B89E6C7D, 0x0CE36DC68, 0x4B6E539E, 0x642EB504, 0x54F9D33C, 0x6D06E365, 0x0EA873D53, 0x0A461850, 0x0D7B18E30, 0x0C45B4042};
-	uint32_t key[4] = {5, 2, 9, 7};
+	uint32_t enflag[] = {0x0B3D9DA5, 0x2862A369, 0X9626BD78};
+	uint32_t key[4] = {2, 0, 2, 4};
 	unsigned int round = 36;
     for(int i=0;i<sizeof(enflag)/sizeof(enflag[0]);i+=2)
     {
@@ -36,6 +36,7 @@ int main()
         temp[0] = enflag[i];
         temp[1] = enflag[i+1];
         decrypt(round, temp, key);
+        // decrypt(round, temp, key);
 //		printf("%08X%08X",temp[0],temp[1]);
         printf("%c%c%c%c%c%c%c%c",*((char*)&temp[0]+0),*((char*)&temp[0]+1),*((char*)&temp[0]+2),*((char*)&temp[0]+3),*((char*)&temp[1]+0),*((char*)&temp[1]+1),*((char*)&temp[1]+2),*((char*)&temp[1]+3));
 //    	printf("%02x%02x%02x%02x%02x%02x%02x%02x",*((char*)&temp[0]+0),*((char*)&temp[0]+1),*((char*)&temp[0]+2),*((char*)&temp[0]+3),*((char*)&temp[1]+0),*((char*)&temp[1]+1),*((char*)&temp[1]+2),*((char*)&temp[1]+3));

@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdint.h>
 #define MX (((z>>5^y<<2)+(y>>3^z<<4))^((sum^y)+(key[(p&3)^e]^z)))
+// #define MX 0x61C88647
 //#define MX (((z>>4^y<<2)+(y>>3^z<<5))^((sum^y)+(key[(e^p&3)]^z)))
 #define DELTA 0x9e3779b9
 //#define DELTA 0x11451400
@@ -50,8 +51,11 @@ void xxtea(uint32_t* v,int n,uint32_t const key[4]){
 }
 
 int main(){
-	uint32_t v[]={689085350, 626885696, 1894439255, 1204672445, 1869189675, 475967424, 1932042439, 1280104741, 2808893494};
-	uint32_t const k[4]={12345678, 12398712, 91283904, 12378192};
+	//uint32_t v[]={0x64F5E178, 0xE1F035A8, 0x34FF1205, 0xFB13E9B0, 0x50A3B989, 0xB1DA43C9, 0x4FC8DB01,0x20DB16AF, 0xED671796};
+
+	uint32_t v[]={0x78E1F564, 0xA835F0E1, 0x0512FF34, 0xB0E913FB, 0x89B9A350, 0xC943DAB1, 0x01DBC84F,
+	0xAF16DB20, 0x961767ED};
+	uint32_t const k[4]={0x6d6f6563, 0x74663230, 0x32342121, 0xCCFFBBBB};
 //	n=bit(v)/32,正数表示加密,负数表示解密
 	int n=sizeof(v)/sizeof(v[0]);
 	printf("n = %d\n",n);

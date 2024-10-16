@@ -31,4 +31,4 @@ def arnold(im_file, a, b):
     Image.fromarray(np.uint8(res_img)).save('res_a{}_b{}.png'.format(a, b))
 
 
-arnold("./r.bmp", 301, 376)
+arnold("./1314521.png", 13, 14)
